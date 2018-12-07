@@ -68,11 +68,8 @@ class GenusController extends Controller
         }
 
 
-        $markdownParser = new MarkdownTransformer(
-            $this->get('markdown.parser')
-        );
-
-        $funFact = $markdownParser->parse($genus->getFunFact());
+        $transformer = $this->get('app.markdown_transformer');
+        $funFact = $transformer->parse($genus->getFunFact());
 
         // todo - add the caching back later
         /*
